@@ -1,0 +1,132 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.bloques {
+   @include m.contenedor;
+   
+
+   @include m.tablet {
+        margin-top: 5rem;
+        
+   }
+
+   &__grid {
+       @include m.grid(1, 1rem);
+       @include m.tablet { 
+            @include m.grid(2, 3rem)
+        }
+       
+   }
+}
+
+.bloque {
+    padding: 3rem;
+    color: v.$blanco;
+    border-radius: 1rem;
+    
+
+    // &:nth-child(1) {
+    //    @include m.bg-gradient(#F97316);
+    // }
+    // &:nth-child(2) {
+    //     @include m.bg-gradient(#A855F7);
+    // }
+    // &:nth-child(3) {
+    //     @include m.bg-gradient(#59910b);
+    // }
+    //  &:nth-child(4) {
+    //     @include m.bg-gradient(#17769E);
+    //  }
+
+&__contenido{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+    
+}
+        
+    
+    &__heading {
+        margin: 1rem 0 2rem 0;
+        font-size: 2.6rem;
+        @include m.tablet { 
+            font-size: 3.6rem;
+        }
+        @include m.texto-degradado(v.$secundario, v.$morado);
+        &--1{
+            @include m.texto-fluido(1rem, 2.5rem);
+            color: v.$negro;
+        }
+        
+    }
+
+    &__enfermedades{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__texto {
+        margin: 1rem 0;
+        color: v.$gris;
+       
+        
+
+        &--cantidad {
+            margin-top: 5rem;
+            font-weight: v.$black;
+            font-size: 6rem;
+            text-align: center;
+        }
+        &--negrita{
+            color: v.$negro;
+            font-weight: v.$bold;
+        }
+    }
+
+    &__contenedor-boton {
+        @include m.tablet {
+            display: flex;
+            // flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            column-gap: 1rem;
+            
+        }
+    }
+
+    &__enlace {
+        color: lighten(v.$gris-oscuro, 40);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        
+        @include m.tablet { 
+            padding: 0;
+         }
+        
+    }
+
+    &__menu-texto {
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: v.$bold;
+        margin: .5rem 0 0 0;
+        color: lighten(v.$gris-oscuro, 40);
+        @include m.tablet { 
+          font-size: 1.4rem;
+         }
+    }
+
+    &__negrita{
+        color: v.$negro;
+        font-weight: v.$bold;
+        font-size: 1.3rem;
+        @include m.tablet { 
+            font-size: 1.5rem;
+         }
+        
+    }
+    
+}

@@ -1,0 +1,96 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    
+    
+
+    &__thead {
+        background-color: v.$gris-oscuro;
+        color: v.$blanco;
+        
+        
+    }
+    &__th {
+        padding: 1rem;
+        text-align: left;
+        font-size: .6rem;
+        @include m.tablet { 
+            font-size: 1.7rem;
+         }
+    }
+
+    &__tr {
+        &:nth-of-type(even) {
+            background-color: darken(v.$gris-claro, 5%);
+        }
+    }
+
+    &__td {
+        padding: 1.5rem 1rem;
+        font-size: .9rem;
+        @include m.tablet { 
+            font-size: 1.7rem;
+         }
+
+        &--acciones {
+            @extend .table__td;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            @include m.tablet { 
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 2rem;
+             }
+        }
+        &--rojo{
+            @extend .table__td;
+            color: v.$rojo;
+            font-weight: v.$bold;
+        }
+        &--verde{
+            @extend .table__td;
+            color: darken(v.$verde, 10%);
+            font-weight: v.$bold;
+        }
+
+        &--naranja{
+            @extend .table__td;
+            color: darken(v.$naranja, 5%);
+            font-weight: v.$bold;
+        }
+    }
+
+    &__accion {
+        all: unset;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        font-weight: v.$bold;
+        
+        &--editar {
+            color: v.$azul;
+            font-size: 1rem;
+            @include m.tablet { 
+                font-size: 1.4rem;
+             }
+        }
+        &--eliminar {
+           color: v.$rojo;
+           font-size: 1rem;
+           @include m.tablet { 
+            font-size: 1.4rem;
+            }
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__ocultar{
+        display: none;
+    }
+}

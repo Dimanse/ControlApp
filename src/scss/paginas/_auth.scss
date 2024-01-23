@@ -1,0 +1,132 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.auth {
+    @include m.contenedor-sm;
+}
+
+.auth__texto {
+    font-size: 2rem;
+}
+
+.login{
+    padding-top: 5rem;
+    .uptask{
+        @include m.texto-degradado(v.$indigo, v.$secundario);
+        @include m.texto-fluido(2rem, 5rem);
+        text-align: center;
+    }
+
+    input[type="submit"]{
+        margin-top: 3rem;
+        border-radius: .5rem;
+        @include m.boton (v.$cyan, v.$blanco);
+    }
+
+    .acciones{
+        
+        a{
+            color: v.$cyan;
+        }
+    }
+}
+
+.crear{
+    padding-top: 5rem;
+
+    .uptask{
+       
+        @include m.texto-degradado(v.$morado, v.$morado);
+        @include m.texto-fluido(2rem, 5rem);
+        text-align: center;
+        
+        
+    }
+
+    input[type="submit"]{
+        margin-top: 3rem;
+        border-radius: .5rem;
+        @include m.boton (v.$morado, v.$blanco);
+    }
+
+    .acciones{
+        padding-bottom: 3rem;
+        a{
+            color: v.$morado;
+            
+        }
+    }
+}
+
+.mensaje{
+    padding-top: 5rem;
+    .uptask{
+        @include m.texto-degradado(v.$naranja, v.$naranja);
+        @include m.texto-fluido(2rem, 5rem);
+        text-align: center;
+    }
+
+    a{
+        margin-top: 3rem;
+        border-radius: .5rem;
+        @include m.boton (v.$naranja, v.$blanco);
+    }
+}
+
+.olvide{
+    padding-top: 5rem;
+    .uptask{
+        @include m.texto-degradado(v.$rosa, v.$rosa);
+        @include m.texto-fluido(2rem, 5rem);
+        text-align: center;
+    }
+
+    input[type="submit"]{
+        margin-top: 3rem;
+        border-radius: .5rem;
+        @include m.boton (v.$rosa, v.$blanco)
+    }
+
+    .acciones{
+        a{
+            color: v.$rosa;
+        }
+    }
+}
+
+.confirmar{
+    padding-top: 5rem;
+    .uptask{
+        @include m.texto-degradado(v.$indigo, v.$indigo);
+        @include m.texto-fluido(2rem, 5rem);
+        text-align: center;
+    }
+    .acciones{
+        justify-content: center;
+        a{
+            color: v.$indigo;
+        }
+    }
+}
+
+.reestablecer{
+
+    padding-top: 5rem;
+
+    .uptask{
+        @include m.texto-degradado(v.$azul, v.$azul);
+        @include m.texto-fluido(2rem, 5rem);
+        text-align: center;
+    }
+    input[type="submit"]{
+        margin-top: 3rem;
+        border-radius: .5rem;
+        @include m.boton (v.$azul, v.$blanco)
+    }
+
+    .acciones{
+        a{
+            color: v.$azul;
+        }
+    }
+}
