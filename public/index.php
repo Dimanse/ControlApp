@@ -42,7 +42,7 @@ $router->get('/admin/dashboard/crear', [DashboardController::class, 'crear']);
 $router->post('/admin/dashboard/crear', [DashboardController::class, 'crear']);
 $router->get('/admin/dashboard/editar', [DashboardController::class, 'editar']);
 $router->post('/admin/dashboard/editar', [DashboardController::class, 'editar']);
-$router->post('/admin/dashboard/eliminar', [DashboardController::class, 'eliminar']);
+
 
 $router->get('/admin/mediciones', [MedicionesController::class, 'index']);
 $router->get('/admin/mediciones/crear', [MedicionesController::class, 'crear']);
