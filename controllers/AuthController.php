@@ -7,7 +7,7 @@ use Model\Usuario;
 use MVC\Router;
 
 class AuthController {
-    public static function login(Router $router) {
+    public static function index(Router $router) {
 
         $alertas = [];
 
