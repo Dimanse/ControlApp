@@ -2,12 +2,11 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+
 use MVC\Router;
 use Controllers\AuthController;
 use Controllers\PresionController;
-
 use Controllers\DashboardController;
-// use Controllers\PonentesController;
 use Controllers\MedicionesController;
 use Controllers\TratamientoController;
 

@@ -1,10 +1,10 @@
 {
-    "name": "juandelatorre/devwebcamp",
+    "name": "domingocurbeira/controlapp",
     "description": "Proyecto PHP 8, MVC, SQL, BEM, SASS",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "MVC\\" : "./login",
+            "MVC\\" : "./",
             "Controllers\\" : "./controllers",
             "Model\\" : "./models",
             "Classes\\" : "./classes"
@@ -12,7 +12,7 @@
     },
     "authors": [
         {
-            "name": "Juan Pablo De la torre Valdez https://twitter.com/@codigoconjuan https://codigoconjuan.com "
+            "name": "Domingo Curbeira \"Dimanse\" "
         }
     ],
     "require": {
