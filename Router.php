@@ -30,12 +30,10 @@ class Router
             $fn = $this->postRoutes[$currentUrl] ?? null;
         }
 
-
         if ( $fn ) {
-            // Call user fn va a llamar una función cuando no sabemos cual sera
-            call_user_func($fn, $this); // This es para pasar argumentos
+            call_user_func($fn, $this);
         } else {
-            echo "Página No Encontrada o Ruta no válida";
+            header('Location: /404');
         }
     }
 
@@ -54,9 +52,9 @@ class Router
         $contenido = ob_get_clean(); // Limpia el Buffer
 
         // Utilizar el Layout de acuerdo a la URL
-        $url_current = $_SERVER['REQUEST_URI'] ?? '/';
+        $url_actual = $_SERVER['REQUEST_URI'] ?? '/';
 
-        if(str_contains($url_current, '/admin')) {
+        if(str_contains($url_actual, '/admin')) {
             include_once __DIR__ . '/views/admin-layout.php';
         } else {
             include_once __DIR__ . '/views/layout.php';
