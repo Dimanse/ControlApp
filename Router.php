@@ -23,15 +23,16 @@ class Router
         $currentUrl = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
         // $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
-
+        
         if ($method === 'GET') {
             $fn = $this->getRoutes[$currentUrl] ?? null;
         } else {
             $fn = $this->postRoutes[$currentUrl] ?? null;
+            
         }
 
         if ( $fn ) {
-            call_user_func($fn, $this);
+           call_user_func($fn, $this);
         } else {
             header('Location: /404');
         }
@@ -53,9 +54,10 @@ class Router
 
         // Utilizar el Layout de acuerdo a la URL
         $url_actual = $_SERVER['REQUEST_URI'] ?? '/';
-
+        
         if(str_contains($url_actual, '/admin')) {
             include_once __DIR__ . '/views/admin-layout.php';
+            
         } else {
             include_once __DIR__ . '/views/layout.php';
         }

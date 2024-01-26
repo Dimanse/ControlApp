@@ -51,6 +51,6 @@ class Perfil extends ActiveRecord {
         return self::$alertas;
     }
         
-        
+   
     
 }   

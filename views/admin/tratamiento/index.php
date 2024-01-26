@@ -39,7 +39,7 @@
                         <th scope="col" class="table__th">Cantidad</th>
                         <th scope="col" class="table__th">Formato</th>
                         <th scope="col" class="table__th">Medicamento</th>
-                        <th scope="col" class="table__th">Gramos</th>
+                        <th scope="col" class="table__th" id="th-gramos">Gramos</th>
                         <th scope="col" class="table__th" id="th-observaciones">Observaciones:</th>
                         <th scope="col" class="table__th"></th>
                     </tr>

@@ -42,7 +42,7 @@
                 <tbody class="table__tbody">
                     <?php foreach($presiones as $presion) { ?>
                         <tr class="table__tr">
-                            <td class="table__td">
+                            <td class="table__td" id="time">
                                 <?php echo $presion->fecha; ?>
                             </td>
                             <td class="table__td">

@@ -28,7 +28,7 @@
         <input
             type="date"
             class="formulario__input"
-            id="fecha"
+            id="fecha fecha_formulario"
             name="fecha"
             value="<?php echo $perfil->fecha ?? ''; ?>"
         >
@@ -70,9 +70,9 @@
         <p class="formulario__texto">Imagen Actual:</p>
         <div class="formulario__imagen">
             <picture>
-                <source srcset="<?php echo $_ENV['HOST'] . '/img/paciente/' . $perfil->imagen; ?>.webp" type="image/webp">
-                <source srcset="<?php echo $_ENV['HOST'] . '/img/paciente/' . $perfil->imagen; ?>.png" type="image/png">
-                <img src="<?php echo $_ENV['HOST'] . '/img/paciente/' . $perfil->imagen; ?>.png" alt="Imagen Paciente">
+                <source srcset="<?php echo $_ENV['APP_URL'] . '/img/paciente/' . $perfil->imagen; ?>.webp" type="image/webp">
+                <source srcset="<?php echo $_ENV['APP_URL'] . '/img/paciente/' . $perfil->imagen; ?>.png" type="image/png">
+                <img src="<?php echo $_ENV['APP_URL'] . '/img/paciente/' . $perfil->imagen; ?>.png" alt="Imagen Paciente">
             </picture>
             
         </div>

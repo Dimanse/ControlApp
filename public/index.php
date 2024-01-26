@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../includes/app.php';
 
 
+
 use MVC\Router;
 use Controllers\AuthController;
 use Controllers\PresionController;
@@ -41,6 +42,14 @@ $router->get('/admin/dashboard/crear', [DashboardController::class, 'crear']);
 $router->post('/admin/dashboard/crear', [DashboardController::class, 'crear']);
 $router->get('/admin/dashboard/editar', [DashboardController::class, 'editar']);
 $router->post('/admin/dashboard/editar', [DashboardController::class, 'editar']);
+
+
+// $router->get('/admin/dashboard', [CitasController::class, 'index']);
+$router->get('/admin/dashboard/crear_cita', [DashboardController::class, 'crear_cita']);
+$router->post('/admin/dashboard/crear_cita', [DashboardController::class, 'crear_cita']);
+$router->get('/admin/dashboard/editar_cita', [DashboardController::class, 'editar_cita']);
+$router->post('/admin/dashboard/editar_cita', [DashboardController::class, 'editar_cita']);
+$router->post('/admin/dashboard/eliminar_cita', [DashboardController::class, 'eliminar_cita']);
 
 
 $router->get('/admin/mediciones', [MedicionesController::class, 'index']);

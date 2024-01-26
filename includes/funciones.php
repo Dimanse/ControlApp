@@ -22,6 +22,8 @@ function is_auth() : bool {
     return isset($_SESSION['nombre']) && !empty($_SESSION);
 }
 
+
+
 function is_admin() : bool {
     if(!isset($_SESSION)) {
         session_start();
@@ -34,3 +36,5 @@ function aos_animacion() : void {
     $efecto = array_rand($efectos, 1);
     echo ' data-aos="' . $efectos[$efecto] . '" ';
 }
+
+

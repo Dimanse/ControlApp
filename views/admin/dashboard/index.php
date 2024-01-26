@@ -12,9 +12,9 @@
 <?php if($perfil) { ?>
     <div class="dashboard__imagen">
             <picture>
-                <source srcset="<?php echo $_ENV['HOST'] . '/img/paciente/' . $perfil->imagen; ?>.webp" type="image/webp">
-                <source srcset="<?php echo $_ENV['HOST'] . '/img/paciente/' . $perfil->imagen; ?>.png" type="image/png">
-                <img loading="lazy" src="/img/paciente/<?php echo $perfil->imagen; ?>" alt="imagen del paciente">
+                <source srcset="<?php echo $_ENV['APP_URL'] . '/img/paciente/' . $perfil->imagen; ?>.webp" type="image/webp">
+                <source srcset="<?php echo $_ENV['APP_URL'] . '/img/paciente/' . $perfil->imagen; ?>.png" type="image/png">
+                <img loading="lazy" src="<?php echo $_ENV['APP_URL'] . '/img/paciente/' . $perfil->imagen; ?>.png" alt="Imagen del paciente"">
             </picture>
 
         
@@ -64,8 +64,18 @@
                         <i class="fa-solid fa-calendar-days bloque__enlace"></i>
                             <p class="bloque__menu-texto"> Fecha de nacimiento</p>
                         </div>
-                        <span class="bloque__negrita">
+                        <span class="bloque__negrita" id="fecha_nacimiento">
                             <?php echo $perfil->fecha; ?> 
+                        </span>
+                    </div>
+
+                    <div class="bloque__contenido">
+                    <div class="bloque__contenedor-boton">
+                        <i class="fa-solid fa-cake-candles bloque__enlace"></i>
+                            <p class="bloque__menu-texto"> Edad actual</p>
+                        </div>
+                        <span class="bloque__negrita" id="edad">
+                            
                         </span>
                     </div>
 
@@ -174,5 +184,107 @@
 
             
         </div>
+
+        <?php if(!$perfil){ ?>
+    <div class="dashboard__contenedor">
+    <div class=" dashboard__contenedor-texto">
+            <p class="text-center dashboard__menu-texto dashboard__menu-texto--grande">Crea un perfil y empieza a registrar tus niveles de glucemia</p>
+        </div>
+    
+        <div class="dashboard__contenedor-boton dashboard__contenedor-boton--centrado">
+            <a class="dashboard__boton" href="/admin/dashboard/crear">
+                <i class="fa-solid fa-circle-plus"></i>
+                Añadir Perfil
+            </a>
+
+        </div>
+    </div>
+<?php } else { ?>
+
+    <h2 class="dashboard__heading"><?php echo $titulo2 .' de ' . $usuario->nombre ?></h2>
+
+    
+    
+       
+    <?php if(!empty($citas)) { ?>
+        <div class="dashboard__contenedor-boton">
+            <a class="dashboard__boton" href="/admin/dashboard/crear_cita">
+                <i class="fa-solid fa-circle-plus"></i>
+                Añadir Niueva Cita
+            </a>
+        </div>
+        <div class="dashboard__contenedor">
+                <table class="table">
+                    <thead class="table__thead">
+                        <tr>
+                            <th scope="col" class="table__th">Fecha</th>
+                            <th scope="col" class="table__th">Hora</th>
+                            <th scope="col" class="table__th">especialista</th>
+                            <th scope="col" class="table__th">clinica</th>
+                            
+                            <th scope="col" class="table__th"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="table__tbody">
+                        <?php foreach($citas as $cita) { ?>
+                            <tr class="table__tr">
+                                <td class="table__td">
+                                    <?php echo $cita->fecha; ?>
+                                </td>
+                                <td class="table__td">
+                                    <?php echo $cita->hora; ?>
+                                </td>
+
+                                <td class="table__td">
+                                    <?php echo $cita->especialista; ?>
+                                </td>
+                                <td class="table__td">
+                                    <?php echo $cita->clinica; ?>
+                                </td>
+                                
+
+                                
+                                
+                                <td class="table__td table__td--acciones">
+                                    <a class="table__accion table__accion--editar" href="/admin/dashboard/editar_cita?id=<?php echo $cita->id; ?>">
+                                    <i class="fa-solid fa-pen-clip"></i>
+                                        Editar
+                                    </a>
+
+                                    <form method="POST" action="/admin/dashboard/eliminar_cita" class="table__formulario">
+                                        <input type="hidden" name="id" value="<?php echo $cita->id; ?>">
+                                        <button class="table__accion table__accion--eliminar" type="submit">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                            Eliminar
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        <?php } ?>
+                    </tbody>
+                </table>
+                <?php } else { ?>
+                    <div class="dashboard__contenedor-boton">
+                        <a class="dashboard__boton" href="/admin/dashboard/crear_cita">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            Crear Nueva Cita
+                        </a>
+                    </div>
+                    <div class=" dashboard__contenedor-texto">
+                        <p class="text-center dashboard__menu-texto dashboard__menu-texto--grande">Aún no has registrado una cita nueva</p>
+                    </div>
+                    
+            <?php } ?>
+        </div> 
+       
+
+    <?php 
+        // echo $paginacion;
+    ?>
+
+<?php } ?>
+
     </main>
 <?php } ?>

@@ -7,3 +7,4 @@ import './registro.js';
 import './regalos.js';
 import './medicion.js';
 import './app1.js';
+import './app2.js';
