@@ -18,40 +18,51 @@ class PresionController {
         $email = $_SESSION['email'];
         $usuario = Usuario::where('email', $email);
         
-        $id = $_SESSION['id'];
-        $presiones = Presion::belongsTo('propietarioId', $id);
-        
+        // $id = $_SESSION['id'];
         // $usuario->id = Usuario::find($id);
         $perfil = Perfil::where('propietarioId', $usuario->id);
-        // debuguear($perfil);
-        
-        // $pagina_actual = $_GET['page'];
-        // $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
-        
-        
-        // // debuguear($id);
-        
-        // if(!$pagina_actual || $pagina_actual < 1) {
-        //     header('Location: /admin/mediciones?id='. $mediciones->propietarioId . '?page=1');
+       
+        // foreach($presiones as $presion){
+        //       $presion = Presion::where('propietarioId', $usuario->id);
         // }
-        // $registros_por_pagina = 5;
-        // $total = Presion::total();
-        // $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
-
-        // if($paginacion->total_paginas() < $pagina_actual) {
-        //     header('Location: /admin/mediciones?page=1');
-        //  }
-
-        // $presiones = Presion::paginar($registros_por_pagina, $paginacion->offset());
-
-
-
+        
+        
+            $pagina_actual = $_GET['page'];
+            $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
+            
+            if(!$pagina_actual || $pagina_actual < 1) {
+                header('Location: /admin/presion?page=1');
+            }
+            
+            $registros_por_pagina = 6;
+            $total = Presion::total('propietarioId', $usuario->id);
+            $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+            
+            // if($paginacion->total_paginas() < $pagina_actual) {
+                // header('Location: /admin/presion?page=1');
+                // }
+                
+                $presiones = Presion::paginando($registros_por_pagina, $paginacion->offset());
+                $presiones = Presion::encuentra($usuario->id);
+                
+                // debuguear($presiones);
+        
+        
+        // debuguear($_GET['page']);
+        
+        
+        
+        // debuguear($_GET);
+        
+        
+        // debuguear($_GET);
         $router->render('admin/presion/index', [
-            'titulo' => 'Perfiles Glucémicos',
+            'titulo' => 'Registros de presión arterial',
             'perfil' => $perfil,
             'presiones' => $presiones,
-            // 'paginacion' => $paginacion->paginacion(),
             'usuario' => $usuario,
+            'paginacion' => $paginacion->paginacion(),
+            
         ]);
     }
 
@@ -63,6 +74,7 @@ class PresionController {
         // $id = $_SESSION['id'];
         $perfil = Perfil::where('propietarioId', $usuario->id);
         
+        // debuguear($perfil);
         $alertas = [];
        
 
@@ -81,7 +93,7 @@ class PresionController {
 
                 // Generar una url unica
                 
-                $presion->propietarioId = $_SESSION['id'];
+                $presion->propietarioId = $perfil->propietarioId;
                 // debuguear($presion);
                 
                 // Guardar en la BD
@@ -89,13 +101,13 @@ class PresionController {
                 // debuguear($resultado);
 
                 if($resultado) {
-                    header('Location: /admin/presion?id=' . $presion->propietarioId);
+                    header('Location: /admin/presion?page=1');
                 }
             }
         }
 
         $router->render('admin/presion/crear', [
-            'titulo' => 'Registrar Glucemia',
+            'titulo' => 'Registrar presión',
             'alertas' => $alertas,
             'perfil' =>$perfil,
             'usuario' => $usuario,

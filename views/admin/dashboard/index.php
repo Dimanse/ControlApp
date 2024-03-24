@@ -1,7 +1,7 @@
 <?php if(!$perfil) { ?>
     <h2 class="dashboard__heading"><?php echo $usuario->nombre .' '. $titulo1 ; ?></h2>
     <?php } else { ?>
-    <h2 class="dashboard__heading"><?php echo $titulo .' ' . $perfil->nombres; ?></h2>
+    <h2 class="dashboard__heading"><?php echo $perfil->nombres . ' ' . $perfil->apellidos; ?></h2>
    
 
     

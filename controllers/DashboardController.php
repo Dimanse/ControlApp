@@ -24,7 +24,7 @@ Class DashboardController{
         $router->render('/admin/dashboard/index', [
             'titulo'=> 'Este es tu perfil, ',
             'titulo1'=> 'ya puedes crear tu perfil',
-            'titulo2' => 'Proximas citas',
+            'titulo2' => 'Proximas citas médicas',
             'usuario' => $usuario,
             'perfil' =>$perfil,
             'citas' => $citas

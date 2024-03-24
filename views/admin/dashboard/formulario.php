@@ -28,7 +28,7 @@
         <input
             type="date"
             class="formulario__input"
-            id="fecha fecha_formulario"
+            id="fecha"
             name="fecha"
             value="<?php echo $perfil->fecha ?? ''; ?>"
         >

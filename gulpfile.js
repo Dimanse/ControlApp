@@ -59,6 +59,8 @@ function javascript() {
         .pipe(dest('./public/build/js'))
 }
 
+
+
 function imagenes() {
     return src(paths.imagenes)
         .pipe( cache(imagemin({ optimizationLevel: 3})))
@@ -88,9 +90,8 @@ function versionAvif( done ) {
 function dev(done) {
     watch( paths.scss, css );
     watch( paths.js, javascript );
-    watch( paths.imagenes, imagenes)
-    watch( paths.imagenes, versionWebp)
-    watch( paths.imagenes, versionAvif)
+    watch( paths.imagenes, imagenes);
+    watch( paths.imagenes, versionWebp);
     done()
 }
 

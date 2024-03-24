@@ -160,6 +160,12 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    public static function encuentra($id) {
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE propietarioId = {$id}";
+        $resultado = self::consultarSQL($query);
+        return  $resultado ;
+    }
+
     // Obtener Registros con cierta cantidad
     public static function get($limite) {
         $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT {$limite} " ;
@@ -170,6 +176,13 @@ class ActiveRecord {
     // Paginar los registros
     public static function paginar($por_pagina, $offset) {
         $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT {$por_pagina} OFFSET {$offset} " ;
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    public static function paginando($por_pagina, $offset) {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY propietarioId DESC LIMIT {$por_pagina} OFFSET {$offset} " ;
+        // debuguear($query);
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
@@ -239,20 +252,18 @@ class ActiveRecord {
     public function crear() {
         // Sanitizar los datos
         $atributos = $this->sanitizarAtributos();
-        // $atributos = $this->atributos();
 
         // Insertar en la base de datos
         $query = " INSERT INTO " . static::$tabla . " ( ";
         $query .= join(', ', array_keys($atributos));
-        $query .= " ) VALUES (' "; 
+        $query .= " ) VALUES ('"; 
         $query .= join("', '", array_values($atributos));
-        $query .= " ') ";
+        $query .= "') ";
 
-        //debuguear($query); // Descomentar si no te funciona algo
+        // debuguear($query); // Descomentar si no te funciona algo
 
         // Resultado de la consulta
         $resultado = self::$db->query($query);
-        
         return [
            'resultado' =>  $resultado,
            'id' => self::$db->insert_id
@@ -275,7 +286,7 @@ class ActiveRecord {
         $query .=  join(', ', $valores );
         $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
         $query .= " LIMIT 1 "; 
-        
+
         // Actualizar BD
         $resultado = self::$db->query($query);
         return $resultado;
@@ -287,6 +298,7 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
         return $resultado;
     }
+
 
     public static function belongsTo($columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '{$valor}'";

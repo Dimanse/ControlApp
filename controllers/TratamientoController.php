@@ -32,7 +32,6 @@ class TratamientoController {
         $email = $_SESSION['email'];
         $usuario = Usuario::where('email', $email);
         $perfil = Perfil::where('propietarioId', $usuario->id);
-        $tratamiento = Tratamiento::where('propietarioId', $usuario->id);
         $alertas = [];
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -55,7 +54,6 @@ class TratamientoController {
             'titulo'=> 'Añade tu tratamiento ',
             // 'titulo1'=> 'ya puedes crear tu perfil',
             'usuario' => $usuario,
-            'tratamiento' =>$tratamiento,
             'alertas' => $alertas,
             'perfil' => $perfil
             
@@ -80,6 +78,7 @@ class TratamientoController {
 
         // Obtener ponente a Editar
         $tratamiento = Tratamiento::find($id);
+        // debuguear($tratamiento);
 
         if(!$tratamiento) {
             header('Location: /admin/tratamiento');

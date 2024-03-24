@@ -25,80 +25,95 @@
         </a>
     </div>
 
-    <div class="dashboard__contenedor">
-        <?php if(!empty($presiones)) { ?>
-            <table class="table">
-                <thead class="table__thead">
-                    <tr>
-                        <th scope="col" class="table__th">Fecha</th>
-                        <th scope="col" class="table__th">Hora</th>
-                        <th scope="col" class="table__th">Máxima</th>
-                        <th scope="col" class="table__th">Mínima</th>
-                        <th scope="col" class="table__th">Observaciones:</th>
-                        <th scope="col" class="table__th"></th>
-                    </tr>
-                </thead>
+    <?php if(!$presiones) { ?>
 
-                <tbody class="table__tbody">
-                    <?php foreach($presiones as $presion) { ?>
-                        <tr class="table__tr">
-                            <td class="table__td" id="time">
-                                <?php echo $presion->fecha; ?>
-                            </td>
-                            <td class="table__td">
-                                <?php echo $presion->hora; ?>
-                            </td>
+        <div class=" dashboard__contenedor-texto">
+            <p class="text-center dashboard__menu-texto dashboard__menu-texto--grande">Aún no has registrado un perfil glucémico</p>
+        </div>
+        <?php 
+            echo $paginacion;
+        ?>
 
-                            <td class="table__td">
-                            <span <?php if($presion->max >= 129 ){ ?>
-                            class="table__td--rojo"
-                            <?php }else { ?>
-                                class="table__td--verde"
-                                <?php } ?> > <?php echo $presion->max; ?></span> Sistólica mmHg
-                            </td>
+    <?php }else{ ?>
+        
+        <section class="presiones">
+            
+            <div class="presiones__grid">
+                <?php foreach($presiones as $presion){ ?>
 
-                            <td class="table__td">
-                            <span <?php if($presion->max >= 84 ){ ?>
-                            class="table__td--rojo"
-                            <?php }else { ?>
-                                class="table__td--verde"
-                                <?php } ?> > <?php echo $presion->min; ?></span> Diastólica mmHg
-                            </td>
-
-                            <td class="table__td">
-                                <?php echo $presion->observaciones; ?>
-                            </td>
-
+                    <div <?php echo aos_animacion(); ?> class="presion">
+                        <!-- <picture>
+                            <source srcset="/build/img/esteto.webp" type="image/webp">
                             
-                            <td class="table__td--acciones">
-                                <a class="table__accion table__accion--editar" href="/admin/presion/editar?id=<?php echo $presion->id; ?>">
-                                <i class="fa-solid fa-pen-clip"></i>
-                                    Editar
-                                </a>
+                            <img class="presion__imagen" loading="lazy" width="200" height="300" src="/build/img/esteto.jpg" alt="Imagen esteto">
+                        </picture> -->
+                        <div class="presion__imagen">
+                            
+                        </div>
+                        <div class="presion__informacion">
+                            <div class="presion__dia">
+                                <div class="presion__fecha-contenedor">
+                                    <i class="fa-solid presion__icono presion__icono--fecha fa-calendar-days"></i>
+                                    <h4 class="presion__fecha">
+                                        <?php echo $presion->fecha; ?>
+                                    </h4>
+                                </div>
+                                <div class="presion__hora-contenedor">
+                                    <i class="fa-solid presion__icono presion__icono--hora fa-clock"></i>
+                                    <h4 class="presion__hora">
+                                        <?php echo $presion->hora; ?>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="presion__niveles-contenedor">
+                                <div class="presion__niveles-max">
+                                    <i class="fa-solid presion__icono presion__icono--max fa-plus"></i>
+                                    <p class="presion__max <?php if($presion->max >= 129){ ?> presion--rojo <?php }else{ ?> presion--verde <?php } ?>"><?php echo $presion->max ?><span class="presion__max--regular"> Sistólica mmHg</span></p>
+                                </div>
 
-                                <form method="POST" action="/admin/presion/eliminar" class="table__formulario">
-                                    <input type="hidden" name="id" value="<?php echo $presion->id; ?>">
-                                    <button class="table__accion table__accion--eliminar" type="submit">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                        Eliminar
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                                <div class="presion__niveles-min">
+                                    <i class="fa-solid presion__icono presion__icono--min fa-minus"></i>
+                                    <p class="presion__min <?php if($presion->min >= 84){ ?> presion--rojo <?php }else{ ?> presion--verde <?php } ?>"><?php echo $presion->min ?><span class="presion__min--regular"> Diastólica mmHg</span></p>
+                                </div>
+                            </div>
 
-                    <?php } ?>
-                </tbody>
-            </table>
-        <?php } else { ?>
+                            <?php if($presion->observaciones){ ?>
+                                <div class="presion__observaciones-contenedor">
+                                    <i class="fa-solid presion__icono presion__icono--observaciones fa-magnifying-glass"></i>
+                                    <div class="presion__observaciones"><?php echo $presion->observaciones; ?></div>
+                                </div>
 
-            <div class=" dashboard__contenedor-texto">
-                <p class="text-center dashboard__menu-texto dashboard__menu-texto--grande">Aún no has registrado tu presión arterial</p>
+                            <?php } ?>
+                            
+                            
+                        </div>
+
+                        <div class="presion--acciones">
+                            <a class="presion__accion presion__accion--editar" href="/admin/presion/editar?id=<?php echo $presion->id; ?>">
+                            <i class="fa-solid presion__icono presion__icono--editar fa-pen-clip"></i>
+                                Editar
+                            </a>
+
+                            <form method="POST" action="/admin/presion/eliminar" class="presion__formulario">
+                                <input type="hidden" name="id" value="<?php echo $presion->id; ?>">
+                                <button class="presion__accion presion__accion--eliminar" type="submit">
+                                <i class="fa-solid presion__icono presion__icono--editar fa-trash-can"></i>
+                                    Eliminar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                <?php } ?>
             </div>
-        <?php } ?>
-    </div>
+        </section>
+    
 
-    <?php 
-        // echo $paginacion;
-    ?>
+        <?php 
+            
+                echo $paginacion;
+            
+        ?>
+    <?php } ?>
 
 <?php } ?>

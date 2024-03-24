@@ -3,15 +3,25 @@
     console.log(anchoPantalla);
     mostrarHoraTratamiento();
     function mostrarHoraTratamiento(){
-        const ocultarTd = document.querySelector('#td');
-        const ocultarTh = document.querySelector('#th');
-        const ocultarTdObservaciones = document.querySelector('#td-observaciones');
-        const ocultarThObservaciones = document.querySelector('#th-observaciones');
+        const ocultarTd = document.querySelectorAll('#td');
+        const ocultarTh = document.querySelectorAll('#th');
+        const ocultarTdObservaciones = document.querySelectorAll('#td-observaciones');
+        const ocultarThObservaciones = document.querySelectorAll('#th-observaciones');
         if(anchoPantalla < 768){
-            ocultarTd.classList.add('table__ocultar');
-            ocultarTh.classList.add('table__ocultar');
-            ocultarTdObservaciones.classList.add('table__ocultar');
-            ocultarThObservaciones.classList.add('table__ocultar');
+            ocultarTd.forEach(td => {
+                td.classList.add('table__ocultar')
+            })
+            ocultarTh.forEach(th => {
+                th.classList.add('table__ocultar')
+            })
+            ocultarTdObservaciones.forEach(tdObservaciones => {
+                tdObservaciones .classList.add('table__ocultar')
+            })
+            ocultarThObservaciones.forEach(thObservaciones => {
+                thObservaciones.classList.add('table__ocultar')
+            })
+           
+            
 
         }
     }

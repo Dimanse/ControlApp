@@ -1,0 +1,133 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.presiones{
+    @include m.contenedor;
+    margin-top: 5rem;
+
+    &__grid{
+        @include m.grid(1, 5rem);
+        @include m.tablet { 
+            @include m.grid(3, 5rem);
+         }
+        // @include m.desktop{
+        //     @include m.grid(4, 4rem);
+        // }
+    }
+}
+
+.presion{
+    @include m.cards;
+    
+    border-radius: .9rem;
+
+
+    
+        // height: 60rem;
+        background-position: top;
+        background-size: 350px;
+        background-repeat: no-repeat;
+        @for $i from 1 through 6{
+            &:nth-child(6n + #{$i}){
+                background-image: image-set(
+                    url('../img/presion_#{$i}.webp') 1x,
+                    url('../img/presion_#{$i}.jpg') 1x,
+                );
+            }
+        }
+    
+    
+    
+
+    &__informacion{
+        margin-top: 22rem;
+    }
+
+    &__dia,
+    &__fecha-contenedor,
+    &__hora-contenedor{
+        display: flex;
+        gap: 2rem;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__fecha,
+    &__hora{
+        color: v.$gris;
+    }
+
+    &__niveles-max,
+    &__niveles-min,
+    &__observaciones-contenedor{
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        
+    }
+
+    &__max,
+    &__min{
+        width: 100%;
+        text-align: center;
+        font-weight: v.$bold;
+        font-size: 2rem;
+
+        &--regular{
+            font-weight: v.$delgada;
+        }
+    }
+
+    &--rojo,
+    &--verde{
+        padding: 1rem;
+        border-radius: .5rem;
+    }
+
+    &--rojo{
+        background-color: v.$rojo;
+        color: v.$blanco;
+    }
+
+    &--verde{
+        background-color: v.$verde;
+        color: v.$blanco;
+    }
+
+    &__observaciones-contenedor{
+        border: 1px solid v.$gris;
+        padding: .5rem;
+        align-items: flex-start;
+    }
+
+    &--acciones{
+        margin-top: 2rem;
+        padding: 1.5rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__accion--editar{
+        color: v.$azul;
+        font-weight: v.$bold;
+    }
+
+    &__formulario{
+        border: none;
+        background-color: transparent;
+        font-weight: v.$bold;
+    }
+
+    &__accion--eliminar{
+        border: none;
+        color: v.$rojo;
+        font-weight: v.$bold;
+        
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    
+}

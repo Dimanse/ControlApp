@@ -1193,6 +1193,124 @@ h3 {
   color: #007df4;
 }
 
+.presiones {
+  width: min(95%, 140rem);
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+.presiones__grid {
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 768px) {
+  .presiones__grid {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.presion {
+  border: 1px solid #7f8ea3;
+  padding: 2rem;
+  border-radius: 0.9rem;
+  background-position: top;
+  background-size: 350px;
+  background-repeat: no-repeat;
+}
+.presion:nth-child(6n+1) {
+  background-image: -webkit-image-set(url("../img/presion_1.webp") 1x, url("../img/presion_1.jpg") 1x);
+  background-image: image-set(url("../img/presion_1.webp") 1x, url("../img/presion_1.jpg") 1x);
+}
+.presion:nth-child(6n+2) {
+  background-image: -webkit-image-set(url("../img/presion_2.webp") 1x, url("../img/presion_2.jpg") 1x);
+  background-image: image-set(url("../img/presion_2.webp") 1x, url("../img/presion_2.jpg") 1x);
+}
+.presion:nth-child(6n+3) {
+  background-image: -webkit-image-set(url("../img/presion_3.webp") 1x, url("../img/presion_3.jpg") 1x);
+  background-image: image-set(url("../img/presion_3.webp") 1x, url("../img/presion_3.jpg") 1x);
+}
+.presion:nth-child(6n+4) {
+  background-image: -webkit-image-set(url("../img/presion_4.webp") 1x, url("../img/presion_4.jpg") 1x);
+  background-image: image-set(url("../img/presion_4.webp") 1x, url("../img/presion_4.jpg") 1x);
+}
+.presion:nth-child(6n+5) {
+  background-image: -webkit-image-set(url("../img/presion_5.webp") 1x, url("../img/presion_5.jpg") 1x);
+  background-image: image-set(url("../img/presion_5.webp") 1x, url("../img/presion_5.jpg") 1x);
+}
+.presion:nth-child(6n+6) {
+  background-image: -webkit-image-set(url("../img/presion_6.webp") 1x, url("../img/presion_6.jpg") 1x);
+  background-image: image-set(url("../img/presion_6.webp") 1x, url("../img/presion_6.jpg") 1x);
+}
+.presion__informacion {
+  margin-top: 22rem;
+}
+.presion__dia, .presion__fecha-contenedor, .presion__hora-contenedor {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-around;
+  align-items: center;
+}
+.presion__fecha, .presion__hora {
+  color: #64748B;
+}
+.presion__niveles-max, .presion__niveles-min, .presion__observaciones-contenedor {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.presion__max, .presion__min {
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 2rem;
+}
+.presion__max--regular, .presion__min--regular {
+  font-weight: 300;
+}
+.presion--rojo, .presion--verde {
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.presion--rojo {
+  background-color: rgb(169, 0, 0);
+  color: #FFFFFF;
+}
+.presion--verde {
+  background-color: #02db02;
+  color: #FFFFFF;
+}
+.presion__observaciones-contenedor {
+  border: 1px solid #64748B;
+  padding: 0.5rem;
+  align-items: flex-start;
+}
+.presion--acciones {
+  margin-top: 2rem;
+  padding: 1.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.presion__accion--editar {
+  color: #007df4;
+  font-weight: 700;
+}
+.presion__formulario {
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+}
+.presion__accion--eliminar {
+  border: none;
+  color: rgb(169, 0, 0);
+  font-weight: 700;
+}
+.presion__accion--eliminar:hover {
+  cursor: pointer;
+}
+
 .formulario {
   display: flex;
   flex-direction: column;

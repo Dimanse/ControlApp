@@ -9,7 +9,7 @@
             id="hora"
             name="hora"
             placeholder="Horario de ingesta del medicamento"
-            value="<?php echo $perfil->hora ?? ''; ?>"
+            value="<?php echo $tratamiento->hora ?? ''; ?>"
         >
     </div>
 
@@ -107,7 +107,7 @@
                 id="cantidad"
                 name="cantidad"
                 placehold
-                value="<?php echo $perfil->cantidad ?? ''; ?>"
+                value="<?php echo $tratamiento->cantidad ?? ''; ?>"
             >
         </div>
 
@@ -119,7 +119,7 @@
                 id="formato"
                 name="formato"
                 placeholder="cápsulas, comprimidos"
-                value="<?php echo $perfil->formato ?? ''; ?>"
+                value="<?php echo $tratamiento->formato ?? ''; ?>"
             >
         </div>
 
@@ -131,7 +131,7 @@
                 id="medicamento"
                 name="medicamento"
                 Placeholder="Gelocatil, Rivotril, Acetaminofen"
-                value="<?php echo $perfil->medicamento ?? ''; ?>"
+                value="<?php echo $tratamiento->medicamento ?? ''; ?>"
             >
         </div>
 
@@ -143,7 +143,7 @@
                 id="gramos"
                 name="gramos"
                 placeholder=" 1 mg., 1 gr., 125 mg.,"
-                value="<?php echo $perfil->gramos ?? ''; ?>"
+                value="<?php echo $tratamiento->gramos ?? ''; ?>"
             >
         </div>
     </div>
@@ -158,7 +158,7 @@
                 class="formulario__input--sociales"
                 name="observaciones"
                 placeholder="Observaciones"
-                value="<?php echo $perfil->observaciones ?? ''; ?>"
+                value="<?php echo $tratamiento->observaciones ?? ''; ?>"
             >
         </div>
     </div>
